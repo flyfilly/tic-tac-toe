@@ -2,18 +2,29 @@
 <html>
     <head>
         <title>This is my awesome site!</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
         <link rel="stylesheet" href="./styles.css"/>
     </head>
     <body>
-        <button id="myButton" class='btn btn-info'>
-            Click me
-        </button>
-   
+        <table id="board" cellpadding="0" cellspacing="0">
+            <tr>
+                <td><button class="cell">1</button></td>
+                <td><button class="cell vert">1</button></td>
+                <td><button class="cell">1</button></td>
+            </tr>
+            <tr>
+                <td><button class="cell hori">1</button></td>
+                <td><button class="cell hori vert">1</button></td>
+                <td><button class="cell hori">1</button></td>
+            </tr>
+            <tr>
+                <td><button class="cell">1</button></td>
+                <td><button class="cell vert">1</button></td>
+                <td><button class="cell">1</button></td> 
+            </tr>
+        </table>
         <script type="text/javascript">
-            document.getElementById("myButton").addEventListener("click", function( ) {
-                console.log("hello");
-            });
+           
         </script>
-    </body>
+    </body> 
 </html>
