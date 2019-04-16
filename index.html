@@ -8,23 +8,35 @@
     <body>
         <table id="board" cellpadding="0" cellspacing="0">
             <tr>
-                <td><button class="cell">1</button></td>
-                <td><button class="cell vert">1</button></td>
-                <td><button class="cell">1</button></td>
+                <td class="cell"><button class="button"></button></td>
+                <td class="cell vert"><button class="button"></button></td>
+                <td class="cell"><button class="button"></button></td>
             </tr>
             <tr>
-                <td><button class="cell hori">1</button></td>
-                <td><button class="cell hori vert">1</button></td>
-                <td><button class="cell hori">1</button></td>
+                <td class="cell hori"><button class="button"></button></td>
+                <td class="cell hori vert"><button class="button"></button></td>
+                <td class="cell hori"><button class="button"></button></td>
             </tr>
             <tr>
-                <td><button class="cell">1</button></td>
-                <td><button class="cell vert">1</button></td>
-                <td><button class="cell">1</button></td> 
+                <td class="cell"><button class="button"></button></td>
+                <td class="cell vert"><button class="button"></button></td>
+                <td class="cell"><button class="button"></button></td> 
             </tr>
         </table>
+         
         <script type="text/javascript">
-           
+            const buttons = document.querySelectorAll(".button");
+            let turn = "X";
+
+            buttons.forEach(button => {
+                button.addEventListener("click", (e) => {
+                    //1.  Set the innerHTML of e.target = turn
+
+                    //2.  If turn is "X", set turn = "O"
+
+                    //3.  Set e.target.disabled = true
+                });
+            });
         </script>
     </body> 
 </html>
