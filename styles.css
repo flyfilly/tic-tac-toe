@@ -1,4 +1,4 @@
-body {
+#content {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -15,12 +15,16 @@ body {
     border-bottom: 2px solid black;
 }
 
-button {
+button.button {
     height: 100px;
     width: 100px;
     background-color: white;
     border: 0px;
     font-size: 50pt;
+}
+
+button:active {
+    background-color: #C0C0C0;    
 }
 
 button:disabled,

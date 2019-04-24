@@ -2,39 +2,78 @@
 <html>
     <head>
         <title>This is my awesome site!</title>
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="./styles.css"/>
     </head>
     <body>
-        <table id="board" cellpadding="0" cellspacing="0">
-            <tr>
-                <td class="cell"><button class="button"></button></td>
-                <td class="cell vert"><button class="button"></button></td>
-                <td class="cell"><button class="button"></button></td>
-            </tr>
-            <tr>
-                <td class="cell hori"><button class="button"></button></td>
-                <td class="cell hori vert"><button class="button"></button></td>
-                <td class="cell hori"><button class="button"></button></td>
-            </tr>
-            <tr>
-                <td class="cell"><button class="button"></button></td>
-                <td class="cell vert"><button class="button"></button></td>
-                <td class="cell"><button class="button"></button></td> 
-            </tr>
-        </table>
-         
+        <nav class="navbar fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button class="btn btn-secondary" id="reset">Reset</button>
+                </div>
+            </div>
+        </nav>
+        <div id="content">
+            <table id="board" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td class="cell"><button id="tl" class="button"></button></td>
+                    <td class="cell vert"><button id="tm" class="button"></button></td>
+                    <td class="cell"><button id="tr" class="button"></button></td>
+                </tr>
+                <tr>
+                    <td class="cell hori"><button id="ml" class="button"></button></td>
+                    <td class="cell hori vert"><button id="mm" class="button"></button></td>
+                    <td class="cell hori"><button id="mr" class="button"></button></td>
+                </tr>
+                <tr>
+                    <td class="cell"><button id="bl" class="button"></button></td>
+                    <td class="cell vert"><button id="bm" class="button"></button></td>
+                    <td class="cell"><button id="br" class="button"></button></td> 
+                </tr>
+            </table>
+        </div> 
         <script type="text/javascript">
             const buttons = document.querySelectorAll(".button");
             let turn = "X";
+            let tl = document.getElementById("tl");
+            let tm = document.getElementById("tm");
+            let tr = document.getElementById("tr");
+            let ml = document.getElementById("ml");
+            let mm = document.getElementById("mm");
+            let mr = document.getElementById("mr");
+            let bl = document.getElementById("bl");
+            let bm = document.getElementById("bm");
+            let br = document.getElementById("br");
+            // Make a variable "gameOver" as a boolean, default to false
+            // Make a variable "winner" for the winning letter
 
             buttons.forEach(button => {
                 button.addEventListener("click", (e) => {
                     //1.  Set the innerHTML of e.target = turn
+                    e.target.innerHTML = turn;
+
+                    //4.  Run your if statements
+                    console.log(tl.innerHTML, tm.innerHTML, tr.innerHTML, tl.innerHTML === tm.innerHTML === tr.innerHTML);
+                    if(tl.innerHTML === tm.innerHTML && tm.innerHTML === tr.innerHTML) {
+                        console.log("Game over", turn);
+                    }
 
                     //2.  If turn is "X", set turn = "O"
+                    if(turn === "X") {
+                        turn = "O";
+                    } else {
+                        turn = "X";
+                    }
 
                     //3.  Set e.target.disabled = true
+                    e.target.disabled = true;
+                });
+            });
+
+            document.getElementById("reset").addEventListener("click", (e) => {
+                buttons.forEach(button => {
+                    button.innerHTML = "";
+                    button.disabled = false;
                 });
             });
         </script>
