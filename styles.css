@@ -31,3 +31,25 @@ button:disabled,
 button[disabled] {
     color : #000;
 }
+
+#x_score {
+    position: fixed;
+    left: 40px;
+    bottom: 40px;
+}
+
+#o_score {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+}
+
+.score-title {
+    font-size: 80pt;
+    text-align: center;
+}
+
+.score {
+    text-align: center;
+    font-size: 40pt;
+}

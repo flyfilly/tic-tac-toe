@@ -31,10 +31,20 @@
                     <td class="cell"><button id="br" class="button"></button></td> 
                 </tr>
             </table>
+            <div id="x_score">
+                <div class="score-title">X</div>
+                <div id="xWins" class="score">0</div>
+            </div>
+            <div id="o_score">
+                <div class="score-title">O</div>
+                <div id="oWins" class="score">0</div>
+            </div>
         </div> 
         <script type="text/javascript">
             const buttons = document.querySelectorAll(".button");
-            let turn = "X";
+            const X = "X";
+            const O = "O";
+            let turn = X;
             let tl = document.getElementById("tl");
             let tm = document.getElementById("tm");
             let tr = document.getElementById("tr");
@@ -44,6 +54,10 @@
             let bl = document.getElementById("bl");
             let bm = document.getElementById("bm");
             let br = document.getElementById("br");
+            let xWinsTag = document.getElementById("xWins");
+            let oWinsTag = document.getElementById("oWins");
+            let xWins = 0;
+            let oWins = 0;
 
             // console.log(tl, tm, tr, ml, mm, mr, bl, bm, br)
             // Make a variable "gameOver" as a boolean, default to false
@@ -57,54 +71,49 @@
                     //4.  Run your if statements
                     if(tl.innerHTML && tl.innerHTML === tm.innerHTML && tm.innerHTML === tr.innerHTML) {
                         console.log("Game over", turn);
-                        toggleDisabled(buttons);
+                        showWinner([tl, tm, tr]);
                     }
 
                     if(ml.innerHTML && ml.innerHTML === mm.innerHTML && mm.innerHTML === mr.innerHTML) {
                         console.log("Game over", turn);
-                        toggleDisabled(buttons);
-                    }
-
-                    if(ml.innerHTML && ml.innerHTML === mm.innerHTML && mm.innerHTML === mr.innerHTML) {
-                        console.log("Game over", turn);
-                        toggleDisabled(buttons);
+                        showWinner([ml, mm, mr]);
                     }
                     
                     if(bl.innerHTML && bl.innerHTML === bm.innerHTML && bm.innerHTML === br.innerHTML) {
                         console.log("Game over", turn);
-                        toggleDisabled(buttons);
+                        showWinner([bl, bm, br]);
                     }
                         
                     if(tl.innerHTML && tl.innerHTML === ml.innerHTML && ml.innerHTML === bl.innerHTML) {
                         console.log("Game over", turn);
-                        toggleDisabled(buttons);
+                        showWinner(t, ml, bl);
                     }
                         
                     if(tm.innerHTML && tm.innerHTML === mm.innerHTML && mm.innerHTML === bm.innerHTML) {
                         console.log("Game over", turn);
-                        toggleDisabled(buttons);
+                        showWinner([tm, mm, bm]);
                     }
                         
                     if(tr.innerHTML && tr.innerHTML === mr.innerHTML && mr.innerHTML === br.innerHTML) {
                         console.log("Game over", turn);
-                        toggleDisabled(buttons);
+                        showWinner([tr, mr, br]);
                     }
                         
                     if(tl.innerHTML && tl.innerHTML === mm.innerHTML && mm.innerHTML === br.innerHTML) {
                         console.log("Game over", turn);
-                        toggleDisabled(buttons);
+                        showWinner([tl, mm, br]);
                     }   
                         
                     if(tr.innerHTML && tr.innerHTML === mm.innerHTML && mm.innerHTML === bl.innerHTML) {
                         console.log("Game over", turn);
-                        toggleDisabled(buttons);
+                        showWinner([tr, mm, bl]);
                     }
 
                     //2.  If turn is "X", set turn = "O"
-                    if(turn === "X") {
-                        turn = "O";
+                    if(turn === X) {
+                        turn = O;
                     } else {
-                        turn = "X";
+                        turn = X;
                     }
 
                     //3.  Set e.target.disabled = true
@@ -112,16 +121,36 @@
                 });
             });
 
-            function toggleDisabled(buttons) {
-                console.log(buttons);
+            function showWinner(row) {
+                row.forEach(button => {
+                    button.style.color = "green";
+                });
+
+                if(turn === X) {
+                    xWins++;
+                } else {
+                    oWins++;
+                }
+
+                xWinsTag.innerHTML = xWins;
+                oWinsTag.innerHTML = oWins;
+                
+                toggleDisabled();
+            }
+
+            function toggleDisabled(state=true) {
                 buttons.forEach(button => {
-                    button.innerHTML = "";
-                    button.disabled = false;
+                    button.disabled = state;
                 });
             }
 
             document.getElementById("reset").addEventListener("click", (e) => {
-                toggleDisabled(buttons);
+                toggleDisabled(false);
+                turn = X;
+                buttons.forEach(button => {
+                    button.innerHTML = "";
+                    button.style.color = "black";
+                });
             });
         </script>
     </body> 
