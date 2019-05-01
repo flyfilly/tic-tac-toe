@@ -44,6 +44,8 @@
             let bl = document.getElementById("bl");
             let bm = document.getElementById("bm");
             let br = document.getElementById("br");
+
+            // console.log(tl, tm, tr, ml, mm, mr, bl, bm, br)
             // Make a variable "gameOver" as a boolean, default to false
             // Make a variable "winner" for the winning letter
 
@@ -53,9 +55,49 @@
                     e.target.innerHTML = turn;
 
                     //4.  Run your if statements
-                    console.log(tl.innerHTML, tm.innerHTML, tr.innerHTML, tl.innerHTML === tm.innerHTML === tr.innerHTML);
-                    if(tl.innerHTML === tm.innerHTML && tm.innerHTML === tr.innerHTML) {
+                    if(tl.innerHTML && tl.innerHTML === tm.innerHTML && tm.innerHTML === tr.innerHTML) {
                         console.log("Game over", turn);
+                        toggleDisabled(buttons);
+                    }
+
+                    if(ml.innerHTML && ml.innerHTML === mm.innerHTML && mm.innerHTML === mr.innerHTML) {
+                        console.log("Game over", turn);
+                        toggleDisabled(buttons);
+                    }
+
+                    if(ml.innerHTML && ml.innerHTML === mm.innerHTML && mm.innerHTML === mr.innerHTML) {
+                        console.log("Game over", turn);
+                        toggleDisabled(buttons);
+                    }
+                    
+                    if(bl.innerHTML && bl.innerHTML === bm.innerHTML && bm.innerHTML === br.innerHTML) {
+                        console.log("Game over", turn);
+                        toggleDisabled(buttons);
+                    }
+                        
+                    if(tl.innerHTML && tl.innerHTML === ml.innerHTML && ml.innerHTML === bl.innerHTML) {
+                        console.log("Game over", turn);
+                        toggleDisabled(buttons);
+                    }
+                        
+                    if(tm.innerHTML && tm.innerHTML === mm.innerHTML && mm.innerHTML === bm.innerHTML) {
+                        console.log("Game over", turn);
+                        toggleDisabled(buttons);
+                    }
+                        
+                    if(tr.innerHTML && tr.innerHTML === mr.innerHTML && mr.innerHTML === br.innerHTML) {
+                        console.log("Game over", turn);
+                        toggleDisabled(buttons);
+                    }
+                        
+                    if(tl.innerHTML && tl.innerHTML === mm.innerHTML && mm.innerHTML === br.innerHTML) {
+                        console.log("Game over", turn);
+                        toggleDisabled(buttons);
+                    }   
+                        
+                    if(tr.innerHTML && tr.innerHTML === mm.innerHTML && mm.innerHTML === bl.innerHTML) {
+                        console.log("Game over", turn);
+                        toggleDisabled(buttons);
                     }
 
                     //2.  If turn is "X", set turn = "O"
@@ -70,11 +112,16 @@
                 });
             });
 
-            document.getElementById("reset").addEventListener("click", (e) => {
+            function toggleDisabled(buttons) {
+                console.log(buttons);
                 buttons.forEach(button => {
                     button.innerHTML = "";
                     button.disabled = false;
                 });
+            }
+
+            document.getElementById("reset").addEventListener("click", (e) => {
+                toggleDisabled(buttons);
             });
         </script>
     </body> 
